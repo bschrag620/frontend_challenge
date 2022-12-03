@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   root 'application#root'
-  resources :demo, only: :index
+  resources :orders do
+    collection do
+      post :search_form
+    end
+  end
   resources :sample, only: :index do
     collection do
       get :sample

@@ -1,11 +1,12 @@
 module Views
   class Shared::SelectionGroup < Phlex::HTML
-    def initialize(heading: '')
+    def initialize(heading: '', **opts)
       @heading = heading
+      @opts = opts
     end
 
     def template(&blk)
-      div(class: 'mb-4') do
+      div(class: 'mb-4', **@opts) do
         render Views::Shared::SemiBoldP.new { @heading }
         render Views::Shared::Separator.new
         div(class: 'flex flex-col') do

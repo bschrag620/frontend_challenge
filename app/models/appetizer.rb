@@ -1,0 +1,2 @@
+class Appetizer < ApplicationRecord
+end
