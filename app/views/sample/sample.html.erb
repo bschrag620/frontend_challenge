@@ -1,0 +1,208 @@
+<div class="max-w-lg mx-auto mt-12">
+  <h1 class="text-xl mb-2">Frontend challenge!</h1>
+  <p class="mb-8">
+    Complete the functionality (<a
+      class="underline"
+      href="https://twitter.com/johnmosesman/status/1598753931135418372"
+      >demo here</a
+    >) for this mockup using your technique of choice and post your solution
+    to
+    <a
+      class="underline"
+      href="https://twitter.com/johnmosesman/status/1598688398679724033?cxt=HHwWgsC-3Zuo168sAAAA"
+      >@johnmosesman.</a
+    >
+  </p>
+
+  <div class="border border-gray-300 rounded p-6">
+    <div class="mb-4">
+      <p class="mb-1">Select Course</p>
+      <div>
+        <select
+          value="All courses"
+          class="border border-gray-300 rounded p-2"
+        >
+          <option value="all">All courses</option>
+          <option value="appetizers">Appetizers</option>
+          <option value="entrees">Entrees</option>
+          <option value="desserts">Desserts</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mb-8">
+      <p class="mb-1">Search Items</p>
+      <input
+        type="text"
+        placeholder="Search Items"
+        class="border border-gray-300 rounded p-2"
+      />
+    </div>
+
+    <div class="flex flex-row justify-between">
+      <div>
+        <p class="mb-4">All Items</p>
+
+        <div class="mb-4">
+          <p class="font-semibold mb-1">Appetizer</p>
+          <div class="border border-b border-gray-200 mb-2"></div>
+
+          <div class="flex flex-col">
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-select-all"
+                class="mb-2"
+                checked="true"
+              />
+              Select All
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-breadsticks"
+                class="mb-2"
+                checked="true"
+              />
+              Breadsticks
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-buffalo-wings"
+                class="mb-2"
+                checked="true"
+              />
+              Buffalo Wings
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-semibold mb-1">Entrees</p>
+          <div class="border border-b border-gray-200 mb-2"></div>
+
+          <div class="flex flex-col">
+            <label>
+              <input
+                type="checkbox"
+                name="entrees-select-all"
+                class="mb-2"
+              />
+              Select All
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="entrees-hamburger"
+                class="mb-2"
+                checked="true"
+              />
+              Hamburger
+            </label>
+            <label>
+              <input type="checkbox" name="entrees-pasta" class="mb-2" />
+              Pasta
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-semibold mb-1">Desserts</p>
+          <div class="border border-b border-gray-200 mb-2"></div>
+
+          <div class="flex flex-col">
+            <label>
+              <input
+                type="checkbox"
+                name="dessert-select-all"
+                class="mb-2"
+              />
+              Select All
+            </label>
+            <label>
+              <input type="checkbox" name="dessert-cake" class="mb-2" />
+              Cake
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="dessert-ice-cream"
+                class="mb-2"
+              />
+              Ice cream
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="mb-4">Selected items</p>
+
+        <div class="mb-4">
+          <p class="font-semibold mb-1">Appetizer</p>
+          <div class="border border-b border-gray-200 mb-2"></div>
+
+          <div class="flex flex-col">
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-select-all"
+                class="mb-2"
+                checked="true"
+              />
+              Select All
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-breadsticks"
+                class="mb-2"
+                checked="true"
+              />
+              Breadsticks
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="appetizer-buffalo-wings"
+                class="mb-2"
+                checked="true"
+              />
+              Buffalo Wings
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <p class="font-semibold mb-1">Entrees</p>
+          <div class="border border-b border-gray-200 mb-2"></div>
+
+          <div class="flex flex-col">
+            <label>
+              <input
+                type="checkbox"
+                name="entrees-select-all"
+                class="mb-2"
+              />
+              Select All
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="entrees-hamburger"
+                class="mb-2"
+                checked="true"
+              />
+              Hamburger
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="w-full bg-blue-600 py-4 px-8 rounded text-white mt-8">
+      Submit
+    </button>
+  </div>
+</div>
