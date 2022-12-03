@@ -15,7 +15,17 @@ class OrdersController < ApplicationController
     )
   end
 
+  def preview_form
+    render turbo_stream: turbo_stream.replace(
+      'order-preview',
+      partial: 'preview',
+      locals: {
+        order: Order.new(order_params)
+      }
+    )
+  end
+
   def order_params
-    params.require(:order).permit(entree_ids: [], appetizer_ids: [], dessert_ids: [])
+    params.require(:order).permit(entree_ids: [], appetizer_ids: [], dessert_ids: []) rescue {}
   end
 end

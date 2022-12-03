@@ -28,19 +28,19 @@ module Views
           div(class: 'flex flex-row justify-between') do
             div do
               p(class: 'mb-4') { 'All Items' }
-              render Views::Shared::SelectionGroup.new(heading: 'Appetizer') do |group|
+              render Views::Shared::FlexGroup.new(heading: 'Appetizer') do |group|
                 group.checkbox(name: 'appetizer-select-all', class: 'mb-2', checked: true, label: 'Select All')
                 group.checkbox(name: 'appetizer-breadsticks', class: 'mb-2', checked: true, label: 'Breadsticks')
                 group.checkbox(name: 'appetizer-buffalo-wings', class: 'mb-2', checked: true, label: 'Buffalo Wings')
               end
 
-              render Views::Shared::SelectionGroup.new(heading: 'Entrees') do |group|
+              render Views::Shared::FlexGroup.new(heading: 'Entrees') do |group|
                 group.checkbox(name: 'entrees-select-all', class: 'mb-2', checked: true, label: 'Select All')
                 group.checkbox(name: 'entrees-hamburger', class: 'mb-2', checked: true, label: 'Hamburger')
                 group.checkbox(name: 'entrees-pasta', class: 'mb-2', checked: true, label: 'Pasta')
               end
 
-              render Views::Shared::SelectionGroup.new(heading: 'Desserts') do |group|
+              render Views::Shared::FlexGroup.new(heading: 'Desserts') do |group|
                 group.checkbox(name: 'desserts-select-all', class: 'mb-2', checked: true, label: 'Select All')
                 group.checkbox(name: 'desserts-cake', class: 'mb-2', checked: true, label: 'Cake')
                 group.checkbox(name: 'desserts-ice-cream', class: 'mb-2', checked: true, label: 'Ice cream')

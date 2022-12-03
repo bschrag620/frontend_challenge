@@ -15,7 +15,9 @@ export default class extends Controller {
   }
 
   processSearch() {
-    this.element.action = this.element.action + '/search_form'
+    if (!this.element.action.includes('/search_form')) {
+      this.element.action = this.element.action + '/search_form'
+    }
     this.formValueTarget.value = this.searchOutletElement.value
     this.element.requestSubmit();
   }

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :orders do
     collection do
       post :search_form
+      post :preview_form
     end
   end
   resources :sample, only: :index do

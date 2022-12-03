@@ -13,7 +13,7 @@ module Views
     end
 
     def template
-      div class: 'max-w-lg mx-auto mt-12' do
+      div class: 'max-w-lg mx-auto w-full mt-12' do
         h1(class: 'text-xl mb-2') { 'Frontend challenge!' }
         div(class: 'border border-gray-300 rounded p-6') do
           div(class: 'mb-4') do
@@ -32,11 +32,12 @@ module Views
             input type: 'text', value: @search_value, placeholder: 'Search Items', id: 'order-search', data: {controller: 'search'}, class: 'border border-gray-300 rounded p-2'
           end
           div(class: 'flex flex-row justify-between') do
-            div do
+            div(class: 'w-full') do
               render partial: 'orders/form', locals: {order: @order, search_value: @search_value}
             end
-            div do
+            div(class: 'w-full') do
               p(class: 'mb-4') { 'Selected items' }
+              render partial: 'orders/preview', locals: {order: @order}
             end
           end
           button type: :submit, class: 'w-full bg-blue-600 py-4 px-8 rounded text-white mt-8' do
