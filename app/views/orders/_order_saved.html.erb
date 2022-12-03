@@ -1,0 +1,4 @@
+<%= content_tag :div, id: 'order-saved' do %>
+  <h1>Order saved!</h1>
+  <%= render Views::Orders::Saved.new(order: order) %>
+<% end %>

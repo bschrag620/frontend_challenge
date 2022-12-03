@@ -40,7 +40,7 @@ module Views
               render partial: 'orders/preview', locals: {order: @order}
             end
           end
-          button type: :submit, class: 'w-full bg-blue-600 py-4 px-8 rounded text-white mt-8' do
+          button type: :submit, form: 'order-form', class: 'w-full bg-blue-600 py-4 px-8 rounded text-white mt-8' do
             'Submit'
           end
         end
