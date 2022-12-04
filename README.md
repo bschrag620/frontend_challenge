@@ -5,20 +5,8 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.7.6
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run `bundle install` to setup the system. 
+Run `rails db:migrate` to setup the database and seed initial category data.
+Run `./bin/dev` to start the server and compile assets. Navigate to `localhost:3000/orders/new` to demo site.
