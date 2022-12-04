@@ -5,10 +5,8 @@ export default class extends Controller {
   static outlets = [ 'search' ]
   static targets = [ 'formValue' ]
 
-  initialize() {
-  }
-
   searchOutletConnected(_, element) {
+    console.log('---------------------search outlet connected----------------------')
     element.addEventListener('keyup', () => {
       this.processSearch();
     })

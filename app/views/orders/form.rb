@@ -2,13 +2,14 @@ module Views
   class Orders::Form < Phlex::HTML
       register_element(:turbo_frame)
 
-    def initialize(order:, search_value: '', entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
+    def initialize(order:, search_value: '', filter_value: nil, entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
       @order = order
       @entrees = entrees
       @appetizers = appetizers
       @desserts = desserts
       @scopes = []
       @search_value = search_value
+      @filter_value = filter_value
     end
 
     def turbo_frame_tag(id, &blk)
@@ -30,13 +31,19 @@ module Views
     end
 
     def template
-      form action: @_view_context.url_for(@order), method: :post, data: {controller: 'searchable-form previewable-form', previewable_form_previewer_outlet: 'order-preview', searchable_form_search_outlet: '#order-search'}, id: 'order-form' do |f|
+      form_data = {
+        controller: 'previewable-form filterable-form',
+        searchable_form_search_outlet: '#order-search'
+      }
+      form action: @_view_context.url_for(@order), method: :post, data: {}, id: 'order-form' do |f|
         input(name: "authenticity_token", type: "hidden", value: @_view_context.form_authenticity_token)
         input(name: "search_value", type: "hidden", value: @search_value, data: {searchable_form_target: 'formValue'})
+        input(name: "filter_value", type: "hidden", value: @filter_value, data: {filterable_form_target: 'formValue'})
         p(class: 'mb-4') { 'All Items' }
         fields_for(:entree_ids) do
-          none = @entrees.all? { |e| e.name.downcase.exclude?(@search_value.downcase) }
-          render Views::Shared::FlexGroup.new(heading: 'Entrees', data: {controller: 'selection-group'}, class: "#{'hidden' if @search_value.present? && none}") do |group|
+          hide = @search_value.present? && @entrees.all? { |e| e.name.downcase.exclude?(@search_value.downcase) }
+          hide ||= @filter_value.present? && @filter_value != 'entrees'
+          render Views::Shared::FlexGroup.new(heading: 'Entrees', data: {controller: 'selection-group'}, class: "#{'hidden' if hide}") do |group|
             span class: "#{'hidden' if @search_value.present?}" do
               group.checkbox(class: "mb-2", id: 'entree-select-all', checked: false, label: 'Select All', data: {selection_group_target: 'all'})
             end
@@ -49,8 +56,9 @@ module Views
         end
 
         fields_for(:appetizer_ids) do
-          none = @appetizers.all? { |a| a.name.downcase.exclude?(@search_value.downcase) }
-          render Views::Shared::FlexGroup.new(heading: 'Appetizers', data: {controller: 'selection-group'}, class: "#{'hidden' if @search_value.present? && none}") do |group|
+          hide = @search_value.present? && @appetizers.all? { |a| a.name.downcase.exclude?(@search_value.downcase) }
+          hide ||= @filter_value.present? && @filter_value != 'appetizers'
+          render Views::Shared::FlexGroup.new(heading: 'Appetizers', data: {controller: 'selection-group'}, class: "#{'hidden' if hide}") do |group|
             span class: "#{'hidden' if @search_value.present?}" do
               group.checkbox(class: "mb-2 #{'hidden' if @search_value.present?}", checked: false, id: 'appetizer-select-all', label: 'Select All', data: {selection_group_target: 'all'})
             end
@@ -63,8 +71,9 @@ module Views
         end
 
         fields_for(:dessert_ids) do
-          none = @desserts.all? { |d| d.name.downcase.exclude?(@search_value.downcase) }
-          render Views::Shared::FlexGroup.new(heading: 'Desserts', data: {controller: 'selection-group'}, class: "#{'hidden' if @search_value.present? && none}") do |group|
+          hide = @search_value.present? && @desserts.all? { |d| d.name.downcase.exclude?(@search_value.downcase) }
+          hide ||= @filter_value.present? && @filter_value != 'desserts'
+          render Views::Shared::FlexGroup.new(heading: 'Desserts', data: {controller: 'selection-group'}, class: "#{'hidden' if hide}") do |group|
             span class: "#{'hidden' if @search_value.present?}" do
               group.checkbox(class: "mb-2 #{'hidden' if @search_value.present?}", checked: false, id: 'dessert-select-all', label: 'Select All', data: {selection_group_target: 'all'})
             end

@@ -4,12 +4,13 @@ module Views
 
     register_element(:turbo_frame)
 
-    def initialize(order:, search_value: '', entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
+    def initialize(order:, search_value: nil, filter_value: nil, entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
       @order = order
       @entrees = entrees
       @appetizers = appetizers
       @desserts = desserts
       @search_value = search_value
+      @filter_value = filter_value
     end
 
     def template
@@ -19,7 +20,7 @@ module Views
           div(class: 'mb-4') do
             p(class: 'mb-1') { 'Select Course' }
             div do
-              select(value: 'All courses', class: 'border border-gray-300 rounded p-2') do
+              select(value: 'All courses', data: {controller: 'select-filter'}, class: 'form-filter-control border border-gray-300 rounded p-2') do
                 option(value: 'all') { 'All courses' }
                 option(value: 'appetizers') { 'Appetizers' }
                 option(value: 'entrees') { 'Entrees' }
