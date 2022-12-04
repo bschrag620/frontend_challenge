@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'application#root'
   resources :orders do
     collection do
-      post :search_form
+      post :filter_form
       post :preview_form
     end
   end

@@ -102,6 +102,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    lodash-rails (4.17.21)
+      railties (>= 3.1)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -231,6 +233,7 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  lodash-rails
   phlex
   phlex-rails
   pry (~> 0.14.1)

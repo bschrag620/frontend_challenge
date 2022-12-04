@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="previewable-form"
 export default class extends Controller {
-  static outlets = [ 'previewer' ]
   connect() {
     this.element.addEventListener('change', () => {
       this.fetchPreview();

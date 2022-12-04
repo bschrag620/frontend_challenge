@@ -25,13 +25,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  def search_form
+  def filter_form
     render turbo_stream: turbo_stream.replace(
       'order-form',
       partial: 'form',
       locals: {
         order: Order.new(order_params),
-        search_value: params[:search_value]
+        search_value: params[:search_value],
+        category_value: params[:category_value]
       }
     )
   end

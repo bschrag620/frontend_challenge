@@ -4,12 +4,13 @@ module Views
 
     register_element(:turbo_frame)
 
-    def initialize(order:, search_value: '', entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
+    def initialize(order:, category_value: 'all', search_value: '', entrees: Entree.all, appetizers: Appetizer.all, desserts: Dessert.all)
       @order = order
       @entrees = entrees
       @appetizers = appetizers
       @desserts = desserts
       @search_value = search_value
+      @category_value = category_value
     end
 
     def template
@@ -19,7 +20,7 @@ module Views
           div(class: 'mb-4') do
             p(class: 'mb-1') { 'Select Course' }
             div do
-              select(value: 'All courses', class: 'border border-gray-300 rounded p-2') do
+              select(value: 'All courses', data: {controller: 'filter-trigger', filter_trigger_handler_value: 'single-select', filter_trigger_filter_name_value: 'category_value'}, class: 'filter-form-trigger border border-gray-300 rounded p-2') do
                 option(value: 'all') { 'All courses' }
                 option(value: 'appetizers') { 'Appetizers' }
                 option(value: 'entrees') { 'Entrees' }
@@ -29,11 +30,11 @@ module Views
           end
           div(class: 'mb-8') do
             p(class: 'mb-1') { 'Search Items' }
-            input type: 'text', value: @search_value, placeholder: 'Search Items', id: 'order-search', data: {controller: 'search'}, class: 'border border-gray-300 rounded p-2'
+            input type: 'text', value: @search_value, placeholder: 'Search Items', data: {controller: 'filter-trigger', filter_trigger_handler_value: 'text', filter_trigger_filter_name_value: 'search_value'}, class: 'filter-form-trigger border border-gray-300 rounded p-2'
           end
           div(class: 'flex flex-row justify-between') do
             div(class: 'w-full') do
-              render partial: 'orders/form', locals: {order: @order, search_value: @search_value}
+              render partial: 'orders/form', locals: {order: @order, search_value: @search_value, category_value: @category_value}
             end
             div(class: 'w-full') do
               p(class: 'mb-4') { 'Selected items' }

@@ -15,6 +15,7 @@ module Views
             render Views::Shared::FlexGroup.new(heading: 'Appetizers') do |group|
               @appetizers.each do |appetizer|
                 text appetizer.name
+                br
               end
             end
           end
@@ -23,6 +24,7 @@ module Views
             render Views::Shared::FlexGroup.new(heading: 'Entrees') do |group|
               @entrees.each do |entree|
                 text entree.name
+                br
               end
             end
           end
@@ -31,6 +33,7 @@ module Views
             render Views::Shared::FlexGroup.new(heading: 'Desserts') do |group|
               @desserts.each do |dessert|
                 text dessert.name
+                br
               end
             end
           end
